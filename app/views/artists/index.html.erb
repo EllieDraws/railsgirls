@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Artists</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Material</th>
+      <th>Year</th>
+      <th>Easy</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artists.each do |artist| %>
+        <tr>
+          <td class="picture"><%= image_tag artist.picture_url if artist.picture.present? %></td>
+          <td class="name"><%= artist.name %></td>
+          <td class="material"><%= artist.material %></td>
+          <td class="year"><%= artist.year %></td>
+          <td class="easy"><%= artist.easy %></td>
+          <td class="show"><%= link_to 'Show', artist %></td>
+          <td class="edit"><%= link_to 'Edit', edit_artist_path(artist) %></td>
+          <td class="destroy"><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Artist', new_artist_path %>
